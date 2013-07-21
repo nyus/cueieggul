@@ -12,3 +12,6 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define GMapsSDKAPIKey @"AIzaSyBX1PmF6mhJYIuBFV50Al7GVRGmC0YPXSM"
+#define GMapsWebServiceKey @"AIzaSyDaTiaN_vYavKBL9grAHCZnHgr0r853kY0"
