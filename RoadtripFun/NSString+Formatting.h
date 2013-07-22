@@ -14,4 +14,9 @@
                                    radiusInMiles:(CGFloat)radius
                                          keyword:(NSString *)keyword
                                             name:(NSString *)name;
+
++(NSString *)formatNearbySearchStringWithLocation:(CLLocationCoordinate2D)location
+                                   radiusInMiles:(CGFloat)radius
+                                         keyword:(NSString *)keyword
+                                            name:(NSString *)name;
 @end

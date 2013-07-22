@@ -17,6 +17,7 @@
 
 @interface APIHelper : NSObject
 @property(nonatomic, assign) id <APIHelperDelegate> delegate;
+
 -(void)cancelConnection;
 -(void)launchGoogleMapsRadarSearchWithLocation:(CLLocationCoordinate2D)location
                            radiusInMiles:(CGFloat)radius

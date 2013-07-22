@@ -19,7 +19,7 @@
 @implementation APIHelper
 -(void)launchGoogleMapsRadarSearchWithLocation:(CLLocationCoordinate2D)location radiusInMiles:(CGFloat)radius keyword:(NSString *)keyword name:(NSString *)name{
     
-    NSString *urlString = [NSString formatRadarSearchStringWithLocation:location radiusInMiles:radius*1609.44 keyword:keyword name:name];
+    NSString *urlString = [NSString formatRadarSearchStringWithLocation:location radiusInMiles:radius keyword:keyword name:name];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
