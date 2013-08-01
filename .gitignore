@@ -1,0 +1,7 @@
+.DS_Store
+Build/*
+RoadtripFun.xcodeproj/xcuserdata/*.xcuserdatad
+RoadtripFun.xcodeproj/xcuserdata/*.xcuserdatad/*
+RoadtripFun.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad
+RoadtripFun.xcodeproj/project.xcworkspace/xcuserdata/*.xcuserdatad/*
+RoadtripFun.xcodeproj/project.xcworkspace
