@@ -31,7 +31,7 @@
 		507DE4841794C4D300174AA8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 507DE4831794C4D300174AA8 /* Default-568h@2x.png */; };
 		507DE4871794C4D300174AA8 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507DE4851794C4D300174AA8 /* MainStoryboard_iPhone.storyboard */; };
 		507DE48A1794C4D300174AA8 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 507DE4881794C4D300174AA8 /* MainStoryboard_iPad.storyboard */; };
-		507DE48D1794C4D300174AA8 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507DE48C1794C4D300174AA8 /* FirstViewController.m */; };
+		507DE48D1794C4D300174AA8 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507DE48C1794C4D300174AA8 /* MapViewController.m */; };
 		507DE48F1794C4D300174AA8 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 507DE48E1794C4D300174AA8 /* first.png */; };
 		507DE4911794C4D300174AA8 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 507DE4901794C4D300174AA8 /* first@2x.png */; };
 		507DE4941794C4D300174AA8 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507DE4931794C4D300174AA8 /* SecondViewController.m */; };
@@ -44,6 +44,7 @@
 		507DE4AD1794C4D300174AA8 /* RoadtripFunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 507DE4AC1794C4D300174AA8 /* RoadtripFunTests.m */; };
 		507DE4B71794CBB800174AA8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507DE4B61794CBB800174AA8 /* CoreLocation.framework */; };
 		507DE4B91794CC9700174AA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 507DE4B81794CC9700174AA8 /* MapKit.framework */; };
+		50A9484E17A9E84700E89ADB /* highway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 50A9484D17A9E84700E89ADB /* highway.gpx */; };
 		50E2CD66179C318800E01356 /* APIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD65179C318800E01356 /* APIHelper.m */; };
 		50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD69179C340B00E01356 /* NSString+Formatting.m */; };
 /* End PBXBuildFile section */
@@ -87,8 +88,8 @@
 		507DE4831794C4D300174AA8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		507DE4861794C4D300174AA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		507DE4891794C4D300174AA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		507DE48B1794C4D300174AA8 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		507DE48C1794C4D300174AA8 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		507DE48B1794C4D300174AA8 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		507DE48C1794C4D300174AA8 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		507DE48E1794C4D300174AA8 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		507DE4901794C4D300174AA8 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
 		507DE4921794C4D300174AA8 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 		507DE4AC1794C4D300174AA8 /* RoadtripFunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoadtripFunTests.m; sourceTree = "<group>"; };
 		507DE4B61794CBB800174AA8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		507DE4B81794CC9700174AA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		50A9484D17A9E84700E89ADB /* highway.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = highway.gpx; sourceTree = "<group>"; };
 		50E2CD64179C318800E01356 /* APIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIHelper.h; sourceTree = "<group>"; };
 		50E2CD65179C318800E01356 /* APIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIHelper.m; sourceTree = "<group>"; };
 		50E2CD68179C340B00E01356 /* NSString+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Formatting.h"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		507DE4611794C4D200174AA8 = {
 			isa = PBXGroup;
 			children = (
+				50A9484D17A9E84700E89ADB /* highway.gpx */,
 				507DE4731794C4D300174AA8 /* RoadtripFun */,
 				507DE4A51794C4D300174AA8 /* RoadtripFunTests */,
 				507DE46C1794C4D200174AA8 /* Frameworks */,
@@ -201,8 +204,8 @@
 				507DE47D1794C4D300174AA8 /* AppDelegate.m */,
 				507DE4851794C4D300174AA8 /* MainStoryboard_iPhone.storyboard */,
 				507DE4881794C4D300174AA8 /* MainStoryboard_iPad.storyboard */,
-				507DE48B1794C4D300174AA8 /* FirstViewController.h */,
-				507DE48C1794C4D300174AA8 /* FirstViewController.m */,
+				507DE48B1794C4D300174AA8 /* MapViewController.h */,
+				507DE48C1794C4D300174AA8 /* MapViewController.m */,
 				507DE48E1794C4D300174AA8 /* first.png */,
 				507DE4901794C4D300174AA8 /* first@2x.png */,
 				507DE4921794C4D300174AA8 /* SecondViewController.h */,
@@ -347,6 +350,7 @@
 				507DE4961794C4D300174AA8 /* second.png in Resources */,
 				507DE4981794C4D300174AA8 /* second@2x.png in Resources */,
 				50722ACB179B7B4000BA2693 /* GoogleMaps.bundle in Resources */,
+				50A9484E17A9E84700E89ADB /* highway.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +387,7 @@
 			files = (
 				507DE47A1794C4D300174AA8 /* main.m in Sources */,
 				507DE47E1794C4D300174AA8 /* AppDelegate.m in Sources */,
-				507DE48D1794C4D300174AA8 /* FirstViewController.m in Sources */,
+				507DE48D1794C4D300174AA8 /* MapViewController.m in Sources */,
 				507DE4941794C4D300174AA8 /* SecondViewController.m in Sources */,
 				50E2CD66179C318800E01356 /* APIHelper.m in Sources */,
 				50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */,

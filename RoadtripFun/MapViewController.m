@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Sihang Huang. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "MapViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "APIHelper.h"
-@interface FirstViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate>{
+@interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate>{
     CLLocationManager *localManager;
     CLAuthorizationStatus locationManagerAuthorizeStatus;
 }
 
 @end
 
-@implementation FirstViewController
+@implementation MapViewController
 
 - (void)viewDidLoad
 {
@@ -31,7 +31,15 @@
         localManager.delegate = self;
         localManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;//every 2 miles
         localManager.activityType = CLActivityTypeAutomotiveNavigation;
-        [localManager startMonitoringSignificantLocationChanges];
+        [localManager startUpdatingLocation];
+        [self.mapview setUserTrackingMode:MKUserTrackingModeFollow];
+        
+        CLLocationCoordinate2D  coords[3];
+        coords[0] = CLLocationCoordinate2DMake(42.330877, -83.038971);
+        coords[1] = CLLocationCoordinate2DMake(42.33095, -83.03881);
+        coords[2] = CLLocationCoordinate2DMake(42.331038, -83.038603);
+        MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:3];
+        [self.mapview addOverlay:line];
     }
 }
 
@@ -39,6 +47,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - map view delegate
+
+-(MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineView *lineView = [[MKPolylineView alloc] initWithPolyline:(MKPolyline *)overlay];
+        lineView.fillColor = [UIColor redColor];
+        lineView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        lineView.lineWidth = 10;
+        return lineView;
+    }else{
+        return nil;
+    }
 }
 
 #pragma mark - tableview
@@ -83,11 +105,15 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     //An array of CLLocation objects containing the location data. The most recent location update is at the end of the array.
     CLLocation *latestLocal =(CLLocation *)[locations objectAtIndex:0];
-    [self.mapview setCenterCoordinate:latestLocal.coordinate animated:YES];
+//    [self.mapview setCenterCoordinate:latestLocal.coordinate animated:YES];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"fail to update location with error:\n%@",error.description);
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error{
+    NSLog(@"fail");
 }
 
 #pragma mark - api helper delegate
