@@ -9,9 +9,13 @@
 #import "MapViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "APIHelper.h"
-@interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate>{
+#import <MobileCoreServices/MobileCoreServices.h>
+@interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     CLLocationManager *localManager;
     CLAuthorizationStatus locationManagerAuthorizeStatus;
+    CLLocation *previousLocal;
+    NSMutableArray *locationsArray;
+    UIImagePickerController *imagePicker;
 }
 
 @end
@@ -27,19 +31,15 @@
                 
         return;
     }else{
+        
+        locationsArray = [NSMutableArray array];
+        
         localManager = [[CLLocationManager alloc] init];
         localManager.delegate = self;
         localManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;//every 2 miles
         localManager.activityType = CLActivityTypeAutomotiveNavigation;
         [localManager startUpdatingLocation];
         [self.mapview setUserTrackingMode:MKUserTrackingModeFollow];
-        
-        CLLocationCoordinate2D  coords[3];
-        coords[0] = CLLocationCoordinate2DMake(42.330877, -83.038971);
-        coords[1] = CLLocationCoordinate2DMake(42.33095, -83.03881);
-        coords[2] = CLLocationCoordinate2DMake(42.331038, -83.038603);
-        MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:3];
-        [self.mapview addOverlay:line];
     }
 }
 
@@ -104,8 +104,21 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     //An array of CLLocation objects containing the location data. The most recent location update is at the end of the array.
-    CLLocation *latestLocal =(CLLocation *)[locations objectAtIndex:0];
-//    [self.mapview setCenterCoordinate:latestLocal.coordinate animated:YES];
+    //draw the path
+//    if (previousLocal) {
+//        CLLocation *currentLocal =(CLLocation *)[locations objectAtIndex:0];
+//        CLLocationCoordinate2D coords[2];
+//        coords[0] = previousLocal.coordinate;
+//        coords[1] = currentLocal.coordinate;
+//        MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:sizeof(coords)/sizeof(CLLocationCoordinate2D)];
+//        [self.mapview addOverlay:line];
+//    }
+//    
+//    //current location would be the next previous location
+//    previousLocal = (CLLocation *)[locations objectAtIndex:0];
+    
+    [locationsArray addObject:[locations objectAtIndex:0]];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -125,4 +138,92 @@
     //INVALID_REQUEST generally indicates that a required query parameter (location or radius) is missing.
 }
 -(void)didFailWithError:(NSError *)error{}
+
+#pragma mark - IBAction
+
+- (IBAction)buttonTapped:(id)sender {
+    CLLocationCoordinate2D coords[locationsArray.count];
+    for (int i = 0; i<locationsArray.count; i++) {
+        coords[i] = ((CLLocation *)locationsArray[i]).coordinate;
+    }
+    
+    MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:sizeof(coords)/sizeof(CLLocationCoordinate2D)];
+    [self.mapview addOverlay:line];
+}
+
+- (IBAction)cameraButtonTapped:(id)sender {
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo",@"Add from gallery",@"Film a video", nil];
+    [sheet showInView:self.view];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //take a photo
+    if (buttonIndex == 0) {
+        if ([self checkCameraAvailability]) {
+            [self initImagePickerViewController];
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
+        }
+    }else if (buttonIndex ==1){//add from galerry
+        if ([self checkGelleryAvailability]) {
+            [self initImagePickerViewController];
+            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary | UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        }
+    }else if (buttonIndex == 2){//film a video
+        if ([self checkCameraAvailability]) {
+            [self initImagePickerViewController];
+            imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imagePicker.mediaTypes = @[(NSString *)kUTTypeMovie];
+        }
+    }
+    
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+#pragma mark - image picker view controller
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+    }else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
+        NSURL *videoURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
+    }
+}
+
+-(void)initImagePickerViewController{
+    if (!imagePicker) {
+        imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+    }
+}
+
+-(BOOL)checkCameraAvailability{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Camera not supported on this device" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+        [alert show
+         ];
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
+-(BOOL)checkGelleryAvailability{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary | UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Photo gellery not supported on this device" delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil, nil];
+        [alert show
+         ];
+        return NO;
+    }else{
+        return YES;
+    }
+}
+
 @end
+
+
+
+

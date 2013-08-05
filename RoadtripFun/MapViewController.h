@@ -11,5 +11,7 @@
 
 @interface MapViewController : UIViewController
 @property (weak, nonatomic) IBOutlet MKMapView *mapview;
+- (IBAction)buttonTapped:(id)sender;
+- (IBAction)cameraButtonTapped:(id)sender;
 
 @end
