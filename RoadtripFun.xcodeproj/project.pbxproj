@@ -48,6 +48,7 @@
 		50A9484E17A9E84700E89ADB /* highway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 50A9484D17A9E84700E89ADB /* highway.gpx */; };
 		50E2CD66179C318800E01356 /* APIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD65179C318800E01356 /* APIHelper.m */; };
 		50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD69179C340B00E01356 /* NSString+Formatting.m */; };
+		6519D49C17B52E1E0002760D /* MapAnnationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49B17B52E1E0002760D /* MapAnnationObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		50E2CD65179C318800E01356 /* APIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIHelper.m; sourceTree = "<group>"; };
 		50E2CD68179C340B00E01356 /* NSString+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Formatting.h"; sourceTree = "<group>"; };
 		50E2CD69179C340B00E01356 /* NSString+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Formatting.m"; sourceTree = "<group>"; };
+		6519D49A17B52E1E0002760D /* MapAnnationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnationObject.h; sourceTree = "<group>"; };
+		6519D49B17B52E1E0002760D /* MapAnnationObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnationObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,12 +207,11 @@
 			children = (
 				50E2CD67179C33FB00E01356 /* Category */,
 				50E2CD63179C317300E01356 /* Helper Class */,
+				6519D49917B52DFE0002760D /* MapViewController */,
 				507DE47C1794C4D300174AA8 /* AppDelegate.h */,
 				507DE47D1794C4D300174AA8 /* AppDelegate.m */,
 				507DE4851794C4D300174AA8 /* MainStoryboard_iPhone.storyboard */,
 				507DE4881794C4D300174AA8 /* MainStoryboard_iPad.storyboard */,
-				507DE48B1794C4D300174AA8 /* MapViewController.h */,
-				507DE48C1794C4D300174AA8 /* MapViewController.m */,
 				507DE48E1794C4D300174AA8 /* first.png */,
 				507DE4901794C4D300174AA8 /* first@2x.png */,
 				507DE4921794C4D300174AA8 /* SecondViewController.h */,
@@ -270,6 +272,17 @@
 				50E2CD69179C340B00E01356 /* NSString+Formatting.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		6519D49917B52DFE0002760D /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				507DE48B1794C4D300174AA8 /* MapViewController.h */,
+				507DE48C1794C4D300174AA8 /* MapViewController.m */,
+				6519D49A17B52E1E0002760D /* MapAnnationObject.h */,
+				6519D49B17B52E1E0002760D /* MapAnnationObject.m */,
+			);
+			name = MapViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +408,7 @@
 				507DE4941794C4D300174AA8 /* SecondViewController.m in Sources */,
 				50E2CD66179C318800E01356 /* APIHelper.m in Sources */,
 				50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */,
+				6519D49C17B52E1E0002760D /* MapAnnationObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

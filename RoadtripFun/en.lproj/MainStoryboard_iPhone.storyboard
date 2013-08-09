@@ -156,6 +156,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
                 <relationship kind="action" name="buttonTapped:"/>
+                <relationship kind="action" name="cameraButtonTapped:"/>
                 <relationship kind="outlet" name="mapview" candidateClass="MKMapView"/>
             </relationships>
         </class>

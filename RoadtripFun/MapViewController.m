@@ -10,12 +10,14 @@
 #import <CoreLocation/CoreLocation.h>
 #import "APIHelper.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "MapAnnationObject.h"
 @interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     CLLocationManager *localManager;
     CLAuthorizationStatus locationManagerAuthorizeStatus;
-    CLLocation *previousLocal;
+    CLLocationCoordinate2D currentCoordinate;
     NSMutableArray *locationsArray;
     UIImagePickerController *imagePicker;
+    UIImage *image;
 }
 
 @end
@@ -61,6 +63,33 @@
     }else{
         return nil;
     }
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    
+    // If it's the user location, just return nil.
+    if([annotation isKindOfClass:[MKUserLocation class]]){
+        return nil;
+    }
+    
+    if ([annotation isKindOfClass:[MapAnnationObject class]]){
+        MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annotaionView"];
+        if (!view) {
+            view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotaionView"];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
+            imageView.image = [UIImage imageWithData:UIImageJPEGRepresentation(image, 0)];
+            view.leftCalloutAccessoryView = imageView;
+            view.pinColor = MKPinAnnotationColorRed;
+            view.animatesDrop = YES;
+            view.canShowCallout = YES;
+
+        }else{
+            view.image = image;
+        }
+        return view;
+    }
+    
+    return nil;
 }
 
 #pragma mark - tableview
@@ -117,8 +146,9 @@
 //    //current location would be the next previous location
 //    previousLocal = (CLLocation *)[locations objectAtIndex:0];
     
+    currentCoordinate = ((CLLocation *)[locations objectAtIndex:0]).coordinate;
     [locationsArray addObject:[locations objectAtIndex:0]];
-
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -153,22 +183,26 @@
 
 - (IBAction)cameraButtonTapped:(id)sender {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take a photo",@"Add from gallery",@"Film a video", nil];
-    [sheet showInView:self.view];
+    [sheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 #pragma mark - UIActionSheetDelegate
 
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //take a photo
-    if (buttonIndex == 0) {
+    
+    if (buttonIndex == 3) {
+        return;
+    }else   if (buttonIndex == 0) {//take a photo
         if ([self checkCameraAvailability]) {
             [self initImagePickerViewController];
+            imagePicker.editing =YES;
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
         }
     }else if (buttonIndex ==1){//add from galerry
         if ([self checkGelleryAvailability]) {
             [self initImagePickerViewController];
+            imagePicker.editing =YES;
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary | UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         }
     }else if (buttonIndex == 2){//film a video
@@ -187,10 +221,19 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
         UIImage *editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
+        image = originalImage;
+        MapAnnationObject *object = [[MapAnnationObject alloc] init];
+        object.coordinate = currentCoordinate;
+        object.title = @"Title";
+        [self.mapview addAnnotation:object];
+        
     }else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
         NSURL *videoURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
     }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)initImagePickerViewController{
