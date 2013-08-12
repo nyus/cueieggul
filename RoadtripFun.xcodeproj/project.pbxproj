@@ -48,7 +48,12 @@
 		50A9484E17A9E84700E89ADB /* highway.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 50A9484D17A9E84700E89ADB /* highway.gpx */; };
 		50E2CD66179C318800E01356 /* APIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD65179C318800E01356 /* APIHelper.m */; };
 		50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E2CD69179C340B00E01356 /* NSString+Formatting.m */; };
-		6519D49C17B52E1E0002760D /* MapAnnationObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49B17B52E1E0002760D /* MapAnnationObject.m */; };
+		6517A4E917B964C400A8D64B /* PathPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517A4E817B964C400A8D64B /* PathPoint.m */; };
+		6517A4EF17B9670500A8D64B /* PhotoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517A4EE17B9670500A8D64B /* PhotoAnnotation.m */; };
+		6519D49C17B52E1E0002760D /* PathPointObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49B17B52E1E0002760D /* PathPointObject.m */; };
+		6519D4A017B55E8D0002760D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49E17B55E8D0002760D /* Model.xcdatamodeld */; };
+		6519D4A617B562720002760D /* SharedDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D4A517B562720002760D /* SharedDataManager.m */; };
+		65F5A60A17B97F7100F183EA /* PhotoVideoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +117,17 @@
 		50E2CD65179C318800E01356 /* APIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIHelper.m; sourceTree = "<group>"; };
 		50E2CD68179C340B00E01356 /* NSString+Formatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Formatting.h"; sourceTree = "<group>"; };
 		50E2CD69179C340B00E01356 /* NSString+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Formatting.m"; sourceTree = "<group>"; };
-		6519D49A17B52E1E0002760D /* MapAnnationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnationObject.h; sourceTree = "<group>"; };
-		6519D49B17B52E1E0002760D /* MapAnnationObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnationObject.m; sourceTree = "<group>"; };
+		6517A4E717B964C400A8D64B /* PathPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathPoint.h; sourceTree = "<group>"; };
+		6517A4E817B964C400A8D64B /* PathPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathPoint.m; sourceTree = "<group>"; };
+		6517A4ED17B9670500A8D64B /* PhotoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotation.h; sourceTree = "<group>"; };
+		6517A4EE17B9670500A8D64B /* PhotoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotation.m; sourceTree = "<group>"; };
+		6519D49A17B52E1E0002760D /* PathPointObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathPointObject.h; sourceTree = "<group>"; };
+		6519D49B17B52E1E0002760D /* PathPointObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathPointObject.m; sourceTree = "<group>"; };
+		6519D49F17B55E8D0002760D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		6519D4A417B562720002760D /* SharedDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedDataManager.h; sourceTree = "<group>"; };
+		6519D4A517B562720002760D /* SharedDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedDataManager.m; sourceTree = "<group>"; };
+		65F5A60817B97F7100F183EA /* PhotoVideoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoVideoAnnotation.h; sourceTree = "<group>"; };
+		65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoVideoAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +172,6 @@
 		507DE4611794C4D200174AA8 = {
 			isa = PBXGroup;
 			children = (
-				508DF37817AD7BCA007122F4 /* MobileCoreServices.framework */,
 				50A9484D17A9E84700E89ADB /* highway.gpx */,
 				507DE4731794C4D300174AA8 /* RoadtripFun */,
 				507DE4A51794C4D300174AA8 /* RoadtripFunTests */,
@@ -179,6 +192,7 @@
 		507DE46C1794C4D200174AA8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				508DF37817AD7BCA007122F4 /* MobileCoreServices.framework */,
 				50722AE0179B7BA000BA2693 /* SystemConfiguration.framework */,
 				50722ADE179B7B9900BA2693 /* QuartzCore.framework */,
 				50722ADC179B7B9300BA2693 /* OpenGLES.framework */,
@@ -205,6 +219,7 @@
 		507DE4731794C4D300174AA8 /* RoadtripFun */ = {
 			isa = PBXGroup;
 			children = (
+				6519D49D17B55E810002760D /* CoreData */,
 				50E2CD67179C33FB00E01356 /* Category */,
 				50E2CD63179C317300E01356 /* Helper Class */,
 				6519D49917B52DFE0002760D /* MapViewController */,
@@ -279,10 +294,26 @@
 			children = (
 				507DE48B1794C4D300174AA8 /* MapViewController.h */,
 				507DE48C1794C4D300174AA8 /* MapViewController.m */,
-				6519D49A17B52E1E0002760D /* MapAnnationObject.h */,
-				6519D49B17B52E1E0002760D /* MapAnnationObject.m */,
+				6519D49A17B52E1E0002760D /* PathPointObject.h */,
+				6519D49B17B52E1E0002760D /* PathPointObject.m */,
+				65F5A60817B97F7100F183EA /* PhotoVideoAnnotation.h */,
+				65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */,
 			);
 			name = MapViewController;
+			sourceTree = "<group>";
+		};
+		6519D49D17B55E810002760D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6517A4ED17B9670500A8D64B /* PhotoAnnotation.h */,
+				6517A4EE17B9670500A8D64B /* PhotoAnnotation.m */,
+				6519D49E17B55E8D0002760D /* Model.xcdatamodeld */,
+				6517A4E717B964C400A8D64B /* PathPoint.h */,
+				6517A4E817B964C400A8D64B /* PathPoint.m */,
+				6519D4A417B562720002760D /* SharedDataManager.h */,
+				6519D4A517B562720002760D /* SharedDataManager.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,7 +439,12 @@
 				507DE4941794C4D300174AA8 /* SecondViewController.m in Sources */,
 				50E2CD66179C318800E01356 /* APIHelper.m in Sources */,
 				50E2CD6A179C340B00E01356 /* NSString+Formatting.m in Sources */,
-				6519D49C17B52E1E0002760D /* MapAnnationObject.m in Sources */,
+				6519D49C17B52E1E0002760D /* PathPointObject.m in Sources */,
+				6519D4A017B55E8D0002760D /* Model.xcdatamodeld in Sources */,
+				6519D4A617B562720002760D /* SharedDataManager.m in Sources */,
+				6517A4E917B964C400A8D64B /* PathPoint.m in Sources */,
+				6517A4EF17B9670500A8D64B /* PhotoAnnotation.m in Sources */,
+				65F5A60A17B97F7100F183EA /* PhotoVideoAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +657,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6519D49E17B55E8D0002760D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6519D49F17B55E8D0002760D /* Model.xcdatamodel */,
+			);
+			currentVersion = 6519D49F17B55E8D0002760D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 507DE4621794C4D200174AA8 /* Project object */;
 }

@@ -6,7 +6,7 @@
  xmlns="http://www.topografix.com/GPX/1/0"
  xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
 <time>2002-02-27T17:18:33Z</time>
-<wpt lat="42.330877" lon="-83.038971">
+<wpt lat="37.785834" lon="-122.406417">
  <ele>44.586548</ele>
  <time>2001-11-28T21:05:28Z</time>
  <name>5066</name>
@@ -14,7 +14,7 @@
  <sym>Crossing</sym>
  <type><![CDATA[Crossing]]></type>
 </wpt>
-<wpt lat="42.33095" lon="-83.03881">
+<wpt lat="37.785734" lon="-122.406417">
  <ele>57.607200</ele>
  <time>2001-06-02T03:26:55Z</time>
  <name>5067</name>
@@ -22,7 +22,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.331038" lon="-83.038603">
+<wpt lat="37.785634" lon="-122.406417">
  <ele>44.826904</ele>
  <time>2001-11-16T23:03:38Z</time>
  <name>5096</name>
@@ -30,7 +30,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.331137" lon="-83.038367">
+<wpt lat="37.785534" lon="-122.406417">
  <ele>50.594727</ele>
  <time>2001-11-28T21:05:28Z</time>
  <name>5142</name>
@@ -38,7 +38,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.331252" lon="-83.038053">
+<wpt lat="37.785434" lon="-122.406417">
  <ele>127.711200</ele>
  <time>2001-06-02T03:26:58Z</time>
  <name>5156</name>
@@ -46,7 +46,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.331341" lon="-83.037785">
+<wpt lat="37.785334" lon="-122.406417">
  <ele>96.926400</ele>
  <time>2001-06-02T03:26:59Z</time>
  <name>5224</name>
@@ -54,7 +54,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.331422" lon="-83.037528">
+<wpt lat="37.785234" lon="-122.406417">
  <ele>82.600800</ele>
  <time>2001-06-02T03:26:59Z</time>
  <name>5229</name>
@@ -62,7 +62,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.331506" lon="-83.037203">
+<wpt lat="37.785134" lon="-122.406417">
  <ele>82.905600</ele>
  <time>2001-06-02T03:26:59Z</time>
  <name>5237</name>
@@ -70,7 +70,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.331605" lon="-83.036905">
+<wpt lat="37.785034" lon="-122.406417">
  <ele>66.696655</ele>
  <time>2001-11-28T21:05:28Z</time>
  <name>5254</name>
@@ -78,7 +78,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.331708" lon="-83.036586">
+<wpt lat="37.784934" lon="-122.406417">
  <ele>74.627442</ele>
  <time>2001-11-07T23:53:41Z</time>
  <name>5258</name>
@@ -86,7 +86,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.331866" lon="-83.036326">
+<wpt lat="37.784834" lon="-122.406417">
  <ele>65.254761</ele>
  <time>2001-11-28T21:05:28Z</time>
  <name>5264</name>
@@ -94,7 +94,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.332089" lon="-83.036109">
+<wpt lat="37.784734" lon="-122.406417">
  <ele>77.419200</ele>
  <time>2001-06-02T03:27:00Z</time>
  <name>526708</name>
@@ -102,7 +102,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.332394" lon="-83.03595">
+<wpt lat="37.784634" lon="-122.406417">
  <ele>74.676000</ele>
  <time>2001-06-02T03:27:00Z</time>
  <name>526750</name>
@@ -110,7 +110,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.332664" lon="-83.035891">
+<wpt lat="37.784534" lon="-122.406417">
  <ele>78.713135</ele>
  <time>2001-11-07T23:53:41Z</time>
  <name>527614</name>
@@ -118,7 +118,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.332878" lon="-83.035934">
+<wpt lat="37.784434" lon="-122.406417">
  <ele>78.713135</ele>
  <time>2001-11-07T23:53:41Z</time>
  <name>527631</name>
@@ -126,7 +126,7 @@
  <sym>Dot</sym>
  <type><![CDATA[Dot]]></type>
 </wpt>
-<wpt lat="42.333108" lon="-83.036015">
+<wpt lat="37.784334" lon="-122.406417">
  <ele>68.275200</ele>
  <time>2001-06-02T03:27:00Z</time>
  <name>5278</name>
@@ -134,259 +134,11 @@
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>
-<wpt lat="42.3333" lon="-83.036146">
+<wpt lat="37.784234" lon="-122.406417">
  <ele>64.008000</ele>
  <time>2001-06-02T03:27:01Z</time>
  <name>5289</name>
  <desc><![CDATA[5289]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.333496" lon="-83.036288">
- <ele>52.997925</ele>
- <time>2001-11-28T21:05:28Z</time>
- <name>5374FIRE</name>
- <desc><![CDATA[5374FIRE]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.333736" lon="-83.036439">
- <ele>56.388000</ele>
- <time>2001-06-02T03:27:02Z</time>
- <name>5376</name>
- <desc><![CDATA[5376]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.333996" lon="-83.03661">
- <ele>56.388000</ele>
- <time>2001-06-02T03:26:55Z</time>
- <name>6006</name>
- <desc><![CDATA[600698]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.334204" lon="-83.03675">
- <ele>46.028564</ele>
- <time>2001-11-28T21:05:28Z</time>
- <name>6006BLUE</name>
- <desc><![CDATA[6006BLUE]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.334478" lon="-83.036927">
- <ele>37.616943</ele>
- <time>2001-11-28T21:05:28Z</time>
- <name>6014MEADOW</name>
- <desc><![CDATA[6014MEADOW]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.334732" lon="-83.037096">
- <ele>56.388000</ele>
- <time>2001-06-02T03:26:55Z</time>
- <name>6029</name>
- <desc><![CDATA[6029]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.334964" lon="-83.037251">
- <ele>50.292000</ele>
- <time>2001-06-02T03:27:05Z</time>
- <name>6053</name>
- <desc><![CDATA[6053]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.335235" lon="-83.037431">
- <ele>25.603200</ele>
- <time>2001-06-02T03:26:57Z</time>
- <name>6066</name>
- <desc><![CDATA[6066]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.335479" lon="-83.037589">
- <ele>34.442400</ele>
- <time>2001-06-02T03:26:57Z</time>
- <name>6067</name>
- <desc><![CDATA[6067]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.335775" lon="-83.037766">
- <ele>30.480000</ele>
- <time>2001-06-02T03:26:57Z</time>
- <name>6071</name>
- <desc><![CDATA[6071]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.336024" lon="-83.037938">
- <ele>15.240000</ele>
- <time>2001-06-02T03:26:56Z</time>
- <name>6073</name>
- <desc><![CDATA[6073]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.336225" lon="-83.038059">
- <ele>37.795200</ele>
- <time>2001-06-02T03:26:57Z</time>
- <name>6084</name>
- <desc><![CDATA[6084]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.336453" lon="-83.038209">
- <ele>64.008000</ele>
- <time>2001-06-02T03:26:55Z</time>
- <name>6130</name>
- <desc><![CDATA[6130]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.336744" lon="-83.038415">
- <ele>64.008000</ele>
- <time>2001-06-02T03:26:58Z</time>
- <name>6131</name>
- <desc><![CDATA[6131]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.336994" lon="-83.038571">
- <ele>62.788800</ele>
- <time>2001-06-02T03:27:05Z</time>
- <name>6153</name>
- <desc><![CDATA[6153]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.337279" lon="-83.038756">
- <ele>55.473600</ele>
- <time>2001-06-02T03:27:05Z</time>
- <name>6171</name>
- <desc><![CDATA[6171]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.337492" lon="-83.038896">
- <ele>62.484000</ele>
- <time>2001-06-02T03:27:04Z</time>
- <name>6176</name>
- <desc><![CDATA[6176]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.337733" lon="-83.039056">
- <ele>62.179200</ele>
- <time>2001-06-02T03:27:04Z</time>
- <name>6177</name>
- <desc><![CDATA[6177]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.338011" lon="-83.039236">
- <ele>69.799200</ele>
- <time>2001-06-02T03:26:55Z</time>
- <name>6272</name>
- <desc><![CDATA[6272]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.338251" lon="-83.039402">
- <ele>73.152000</ele>
- <time>2001-06-02T03:26:56Z</time>
- <name>6272</name>
- <desc><![CDATA[6272]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.338546" lon="-83.039601">
- <ele>70.104000</ele>
- <time>2001-06-02T03:27:04Z</time>
- <name>6278</name>
- <desc><![CDATA[6278]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.3388" lon="-83.039813">
- <ele>57.564209</ele>
- <time>2001-11-16T23:03:38Z</time>
- <name>6280</name>
- <desc><![CDATA[6280]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.339086" lon="-83.040068">
- <ele>66.696655</ele>
- <time>2001-11-16T23:03:38Z</time>
- <name>6283</name>
- <desc><![CDATA[6283]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.339337" lon="-83.040328">
- <ele>72.945191</ele>
- <time>2001-11-16T23:03:38Z</time>
- <name>6289</name>
- <desc><![CDATA[6289]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Dot]]></type>
-</wpt>
-<wpt lat="42.339625" lon="-83.040677">
- <ele>72.847200</ele>
- <time>2001-06-02T03:27:04Z</time>
- <name>6297</name>
- <desc><![CDATA[6297]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.339902" lon="-83.041017">
- <ele>53.644800</ele>
- <time>2001-06-02T03:27:02Z</time>
- <name>6328</name>
- <desc><![CDATA[6328]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.340162" lon="-83.041331">
- <ele>43.891200</ele>
- <time>2001-06-02T03:27:03Z</time>
- <name>6354</name>
- <desc><![CDATA[6354]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.340428" lon="-83.041685">
- <ele>48.768000</ele>
- <time>2001-06-02T03:27:02Z</time>
- <name>635722</name>
- <desc><![CDATA[635722]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.34068" lon="-83.042039">
- <ele>49.072800</ele>
- <time>2001-06-02T03:27:02Z</time>
- <name>635783</name>
- <desc><![CDATA[635783]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.340918" lon="-83.042307">
- <ele>62.484000</ele>
- <time>2001-06-02T03:27:03Z</time>
- <name>6373</name>
- <desc><![CDATA[6373]]></desc>
- <sym>Dot</sym>
- <type><![CDATA[Intersection]]></type>
-</wpt>
-<wpt lat="42.341239" lon="-83.042608">
- <ele>3.962400</ele>
- <time>2001-06-02T03:26:56Z</time>
- <name>6634</name>
- <desc><![CDATA[6634]]></desc>
  <sym>Dot</sym>
  <type><![CDATA[Intersection]]></type>
 </wpt>

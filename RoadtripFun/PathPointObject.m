@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Sihang Huang. All rights reserved.
 //
 
-#import "MapAnnationObject.h"
-
-@implementation MapAnnationObject
+#import "PathPointObject.h"
+#import <MapKit/MapKit.h>
+@implementation PathPointObject
 @end

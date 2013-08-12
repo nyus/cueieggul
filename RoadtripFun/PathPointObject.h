@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
-@interface MapAnnationObject : NSObject<MKAnnotation>
-@property(nonatomic)CLLocationCoordinate2D coordinate;
+@class CLLocation;
+@interface PathPointObject : NSObject
+@property(nonatomic, strong) CLLocation *location;
 @property(nonatomic, strong) NSString *title;
 @end

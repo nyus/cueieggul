@@ -10,14 +10,26 @@
 #import <CoreLocation/CoreLocation.h>
 #import "APIHelper.h"
 #import <MobileCoreServices/MobileCoreServices.h>
-#import "MapAnnationObject.h"
+#import "PathPointObject.h"
+#import "PathPoint.h"
+#import "SharedDataManager.h"
+#import "PhotoAnnotation.h"
 @interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     CLLocationManager *localManager;
     CLAuthorizationStatus locationManagerAuthorizeStatus;
-    CLLocationCoordinate2D currentCoordinate;
-    NSMutableArray *locationsArray;
+    CLLocationCoordinate2D currentLocationPointCoords;
+    PathPoint *annotaionLocationPoint;
+    
+    NSMutableArray *pathPointsArray;
+    NSMutableArray *photoPointsArray;
+    
     UIImagePickerController *imagePicker;
     UIImage *image;
+    
+    //
+    CLLocationCoordinate2D current;
+    CLLocationCoordinate2D pastPathPoint;
+    CLLocationCoordinate2D pastPhotoPoint;
 }
 
 @end
@@ -34,7 +46,8 @@
         return;
     }else{
         
-        locationsArray = [NSMutableArray array];
+        pathPointsArray = [NSMutableArray array];
+        photoPointsArray = [NSMutableArray array];
         
         localManager = [[CLLocationManager alloc] init];
         localManager.delegate = self;
@@ -72,7 +85,7 @@
         return nil;
     }
     
-    if ([annotation isKindOfClass:[MapAnnationObject class]]){
+    if ([annotation isKindOfClass:[PathPointObject class]]){
         MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annotaionView"];
         if (!view) {
             view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotaionView"];
@@ -146,9 +159,15 @@
 //    //current location would be the next previous location
 //    previousLocal = (CLLocation *)[locations objectAtIndex:0];
     
-    currentCoordinate = ((CLLocation *)[locations objectAtIndex:0]).coordinate;
-    [locationsArray addObject:[locations objectAtIndex:0]];
     
+    //the interval needs to be at least 10 meters. The first condition is initialization.
+    if ((pastPathPoint.latitude == 0 && pastPathPoint.longitude == 0) || MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPathPoint), MKMapPointForCoordinate(current)) > 10) {
+        pastPathPoint = current;
+
+        PathPointObject *pathAnnotation = [[PathPointObject alloc] init];
+        pathAnnotation.location = [locations objectAtIndex:0];
+        [pathPointsArray addObject:pathAnnotation];
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -173,8 +192,8 @@
 
 - (IBAction)buttonTapped:(id)sender {
     CLLocationCoordinate2D coords[locationsArray.count];
-    for (int i = 0; i<locationsArray.count; i++) {
-        coords[i] = ((CLLocation *)locationsArray[i]).coordinate;
+    for (int i = 0; i<pathPointsArray.count; i++) {
+        coords[i] = ((CLLocation *)pathPointsArray[i]).coordinate;
     }
     
     MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:sizeof(coords)/sizeof(CLLocationCoordinate2D)];
@@ -195,14 +214,14 @@
     }else   if (buttonIndex == 0) {//take a photo
         if ([self checkCameraAvailability]) {
             [self initImagePickerViewController];
-            imagePicker.editing =YES;
+            imagePicker.allowsEditing =YES;
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             imagePicker.mediaTypes = @[(NSString *)kUTTypeImage];
         }
     }else if (buttonIndex ==1){//add from galerry
         if ([self checkGelleryAvailability]) {
             [self initImagePickerViewController];
-            imagePicker.editing =YES;
+            imagePicker.allowsEditing =YES;
             imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary | UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         }
     }else if (buttonIndex == 2){//film a video
@@ -219,21 +238,35 @@
 #pragma mark - image picker view controller
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    
+    //compare proximity. if the location of the photo taken this time is far away enough from the location of the last taken photo, then there should be a different annotation for it.
+    
+    //the interval needs to be at least 10 meters. The first condition is initialization.
+    if (MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPhotoPoint), MKMapPointForCoordinate(current)) > 30) {
+        //create a new photoAnno object
+        PhotoAnnotation *photoAnno = [NSEntityDescription insertNewObjectForEntityForName:@"PhotoAnnotation" inManagedObjectContext:[SharedDataManager sharedInstance].managedObjectContext];
+        pastPhotoPoint = current;
+    }else{
+        //pull the last photoAnno object
+    }
+
+    
+    
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *originalImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+
         UIImage *editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
-        image = originalImage;
-        MapAnnationObject *object = [[MapAnnationObject alloc] init];
-        object.coordinate = currentCoordinate;
-        object.title = @"Title";
-        [self.mapview addAnnotation:object];
+        image = editedImage;
         
     }else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
         NSURL *videoURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
     }
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //add annotaion
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.mapview addAnnotation:annotationObject];
+    }];
 }
 
 -(void)initImagePickerViewController{
