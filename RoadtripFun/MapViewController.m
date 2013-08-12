@@ -14,6 +14,7 @@
 #import "PathPoint.h"
 #import "SharedDataManager.h"
 #import "PhotoAnnotation.h"
+#import "PhotoVideoAnnotation.h"
 @interface MapViewController ()<UISearchDisplayDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,MKMapViewDelegate,CLLocationManagerDelegate,APIHelperDelegate, UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>{
     CLLocationManager *localManager;
     CLAuthorizationStatus locationManagerAuthorizeStatus;
@@ -191,7 +192,7 @@
 #pragma mark - IBAction
 
 - (IBAction)buttonTapped:(id)sender {
-    CLLocationCoordinate2D coords[locationsArray.count];
+    CLLocationCoordinate2D coords[pathPointsArray.count];
     for (int i = 0; i<pathPointsArray.count; i++) {
         coords[i] = ((CLLocation *)pathPointsArray[i]).coordinate;
     }
@@ -241,33 +242,113 @@
     
     //compare proximity. if the location of the photo taken this time is far away enough from the location of the last taken photo, then there should be a different annotation for it.
     
+    PhotoVideoAnnotation *photoPointAnnotation;
     //the interval needs to be at least 10 meters. The first condition is initialization.
     if (MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPhotoPoint), MKMapPointForCoordinate(current)) > 30) {
+        
         //create a new photoAnno object
-        PhotoAnnotation *photoAnno = [NSEntityDescription insertNewObjectForEntityForName:@"PhotoAnnotation" inManagedObjectContext:[SharedDataManager sharedInstance].managedObjectContext];
+        photoPointAnnotation = [[PhotoVideoAnnotation alloc] init];
+        photoPointAnnotation.location = pastPhotoPoint;
+        [photoPointsArray addObject:photoPointAnnotation];
+        
         pastPhotoPoint = current;
+        
     }else{
         //pull the last photoAnno object
+        photoPointAnnotation = (PhotoVideoAnnotation *)photoPointsArray[photoPointsArray.count - 1];
     }
 
-    
-    
     NSString *mediaType = [info objectForKey:@"UIImagePickerControllerMediaType"];
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
 
         UIImage *editedImage = [info objectForKey:@"UIImagePickerControllerEditedImage"];
         image = editedImage;
         
+        //save image to file and add the url of the thumnail
+        [photoPointAnnotation.arrayOfThumnailUrls addObject:[self saveThumnailImageToFile:editedImage]];
+        [photoPointAnnotation.arrayOfHighResPhotoUrls addObject:[self saveHighResImageToFile:editedImage]];
+        
     }else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
         NSURL *videoURL = [info objectForKey:@"UIImagePickerControllerMediaURL"];
     }
     
-    
     //add annotaion
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.mapview addAnnotation:annotationObject];
+        [self.mapview addAnnotation:photoPointAnnotation];
     }];
 }
+
+-(NSString *)saveThumnailImageToFile:(UIImage *)originalImage{
+    //return the url 
+    return nil;
+}
+
+-(NSString *)saveHighResImageToFile:(UIImage *)originalImage{
+    //return the url
+    return nil;
+}
+
+/*
+-(void)populateFloorplanFromParseObject:(PFObject *)object{
+    self.building = [object valueForKey:@"building"];
+    self.floor = [object valueForKey:@"floor"];
+    self.updateDate = [object valueForKey:@"updatedAt"];
+    self.leftHorizontalPointsArray = [object valueForKey:@"leftHorizontal"];
+    self.rightHorizontalPointArray = [object valueForKey:@"rightHorizontal"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *imageName = [NSString stringWithFormat:@"/%@%@.png",self.floor,self.building];
+    NSString *path = [documentsDirectory stringByAppendingString:imageName];
+    
+    NSOperationQueue *worker = [[NSOperationQueue alloc] init];
+    [worker addOperationWithBlock:^{
+        [self saveFloorplan:[[object valueForKey:@"image"] getData] toFile:path withName:imageName];
+    }];
+}
+
+-(void)saveFloorplan:(NSData *)imageData toFile:(NSString *)filePath withName:(NSString *)name{
+    NSError *error;
+    if ([[NSFileManager defaultManager] contentsAtPath:filePath]) {
+        NSLog(@"FileManager removes file at path: %@\n",filePath);
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+    }
+    if (!error && imageData) {
+        NSLog(@"FileManager stores a file at path: %@\n",filePath);
+        if([imageData writeToFile:filePath atomically:YES]){
+            NSLog(@"Yes, file stored successfully\n");
+            self.imageName = name;
+            //save context
+            NSError *error = nil;
+            if ([[DataManager sharedInstance] managedObjectContext] != nil
+                && [[[DataManager sharedInstance] managedObjectContext] hasChanges]
+                && ![[[DataManager sharedInstance] managedObjectContext] save:&error]) {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+        }else{
+            NSLog(@"No, file stored failed\n");
+        }
+        
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (self.leftHorizontalPointsArray != nil && self.rightHorizontalPointArray != nil) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"imageSavingComplete"
+                                                                    object:self
+                                                                  userInfo:@{@"imageName":self.imageName,@"leftHorizontalPointsArray":self.leftHorizontalPointsArray==nil?nil:self.leftHorizontalPointsArray,@"rightHorizontalPointsArray":self.rightHorizontalPointArray==nil?nil:self.rightHorizontalPointArray}];
+            }else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"imageSavingComplete"
+                                                                    object:self
+                                                                  userInfo:@{@"imageName":self.imageName}];
+            }
+            
+        }];
+    }else{
+        NSLog(@"store file path to coredata failed");
+    }
+}
+*/
 
 -(void)initImagePickerViewController{
     if (!imagePicker) {
