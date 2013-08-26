@@ -10,7 +10,9 @@
 #import <MapKit/MapKit.h>
 
 @interface PhotoVideoAnnotation : NSObject<MKAnnotation>
-@property(nonatomic) CLLocationCoordinate2D location;
+@property(nonatomic) CLLocationCoordinate2D coordinate;
+@property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSMutableArray *arrayOfThumnailUrls;
 @property(nonatomic, strong) NSMutableArray *arrayOfHighResPhotoUrls;
+- (id)initWithLocation:(CLLocationCoordinate2D)coord;
 @end

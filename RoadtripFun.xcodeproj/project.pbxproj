@@ -53,6 +53,8 @@
 		6519D49C17B52E1E0002760D /* PathPointObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49B17B52E1E0002760D /* PathPointObject.m */; };
 		6519D4A017B55E8D0002760D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6519D49E17B55E8D0002760D /* Model.xcdatamodeld */; };
 		6519D4A617B562720002760D /* SharedDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6519D4A517B562720002760D /* SharedDataManager.m */; };
+		656863CC17CBD64400F1AA74 /* PhotoAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656863CB17CBD64400F1AA74 /* PhotoAnnotationView.m */; };
+		656863CF17CBD79700F1AA74 /* gradientBlack-as-Smart-Object-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 656863CE17CBD79700F1AA74 /* gradientBlack-as-Smart-Object-1.png */; };
 		65F5A60A17B97F7100F183EA /* PhotoVideoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,9 @@
 		6519D49F17B55E8D0002760D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		6519D4A417B562720002760D /* SharedDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedDataManager.h; sourceTree = "<group>"; };
 		6519D4A517B562720002760D /* SharedDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedDataManager.m; sourceTree = "<group>"; };
+		656863CA17CBD64400F1AA74 /* PhotoAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoAnnotationView.h; sourceTree = "<group>"; };
+		656863CB17CBD64400F1AA74 /* PhotoAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoAnnotationView.m; sourceTree = "<group>"; };
+		656863CE17CBD79700F1AA74 /* gradientBlack-as-Smart-Object-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradientBlack-as-Smart-Object-1.png"; sourceTree = "<group>"; };
 		65F5A60817B97F7100F183EA /* PhotoVideoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoVideoAnnotation.h; sourceTree = "<group>"; };
 		65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoVideoAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +224,7 @@
 		507DE4731794C4D300174AA8 /* RoadtripFun */ = {
 			isa = PBXGroup;
 			children = (
+				656863CD17CBD78500F1AA74 /* Images */,
 				6519D49D17B55E810002760D /* CoreData */,
 				50E2CD67179C33FB00E01356 /* Category */,
 				50E2CD63179C317300E01356 /* Helper Class */,
@@ -298,6 +304,8 @@
 				6519D49B17B52E1E0002760D /* PathPointObject.m */,
 				65F5A60817B97F7100F183EA /* PhotoVideoAnnotation.h */,
 				65F5A60917B97F7100F183EA /* PhotoVideoAnnotation.m */,
+				656863CA17CBD64400F1AA74 /* PhotoAnnotationView.h */,
+				656863CB17CBD64400F1AA74 /* PhotoAnnotationView.m */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -314,6 +322,14 @@
 				6519D4A517B562720002760D /* SharedDataManager.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		656863CD17CBD78500F1AA74 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				656863CE17CBD79700F1AA74 /* gradientBlack-as-Smart-Object-1.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,6 +415,7 @@
 				507DE4981794C4D300174AA8 /* second@2x.png in Resources */,
 				50722ACB179B7B4000BA2693 /* GoogleMaps.bundle in Resources */,
 				50A9484E17A9E84700E89ADB /* highway.gpx in Resources */,
+				656863CF17CBD79700F1AA74 /* gradientBlack-as-Smart-Object-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +462,7 @@
 				6517A4E917B964C400A8D64B /* PathPoint.m in Sources */,
 				6517A4EF17B9670500A8D64B /* PhotoAnnotation.m in Sources */,
 				65F5A60A17B97F7100F183EA /* PhotoVideoAnnotation.m in Sources */,
+				656863CC17CBD64400F1AA74 /* PhotoAnnotationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

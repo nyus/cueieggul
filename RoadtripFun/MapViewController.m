@@ -86,13 +86,14 @@
         return nil;
     }
     
-    if ([annotation isKindOfClass:[PathPointObject class]]){
+    if ([annotation isKindOfClass:[PhotoVideoAnnotation class]]){
         MKPinAnnotationView *view = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"annotaionView"];
         if (!view) {
             view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"annotaionView"];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
             imageView.image = [UIImage imageWithData:UIImageJPEGRepresentation(image, 0)];
-            view.leftCalloutAccessoryView = imageView;
+            view.leftCalloutAccessoryView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 32, 32) collectionViewLayout:[[UICollectionViewLayout alloc] init]];
+            
             view.pinColor = MKPinAnnotationColorRed;
             view.animatesDrop = YES;
             view.canShowCallout = YES;
@@ -146,21 +147,13 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    //An array of CLLocation objects containing the location data. The most recent location update is at the end of the array.
-    //draw the path
-//    if (previousLocal) {
-//        CLLocation *currentLocal =(CLLocation *)[locations objectAtIndex:0];
-//        CLLocationCoordinate2D coords[2];
-//        coords[0] = previousLocal.coordinate;
-//        coords[1] = currentLocal.coordinate;
-//        MKPolyline *line = [MKPolyline polylineWithCoordinates:coords count:sizeof(coords)/sizeof(CLLocationCoordinate2D)];
-//        [self.mapview addOverlay:line];
-//    }
-//    
-//    //current location would be the next previous location
-//    previousLocal = (CLLocation *)[locations objectAtIndex:0];
     
+    //init
+    if ((current.latitude == 0 && current.longitude == 0)) {
+        current = [[locations objectAtIndex:0] coordinate];
+    }
     
+    //pathPointsArray keeps track of the user paths points. eventually these points would be connected to form the trip itinerary
     //the interval needs to be at least 10 meters. The first condition is initialization.
     if ((pastPathPoint.latitude == 0 && pastPathPoint.longitude == 0) || MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPathPoint), MKMapPointForCoordinate(current)) > 10) {
         pastPathPoint = current;
@@ -212,7 +205,7 @@
     
     if (buttonIndex == 3) {
         return;
-    }else   if (buttonIndex == 0) {//take a photo
+    }else if (buttonIndex == 0) {//take a photo
         if ([self checkCameraAvailability]) {
             [self initImagePickerViewController];
             imagePicker.allowsEditing =YES;
@@ -233,7 +226,9 @@
         }
     }
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    if (imagePicker) {
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
 }
 
 #pragma mark - image picker view controller
@@ -244,13 +239,15 @@
     
     PhotoVideoAnnotation *photoPointAnnotation;
     //the interval needs to be at least 30 meters. The first condition is initialization.
-    if (MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPhotoPoint), MKMapPointForCoordinate(current)) > 30) {
+    if (MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPhotoPoint), MKMapPointForCoordinate(current)) > 30 ||
+        photoPointsArray == nil) {
         
         //create a new photoAnno object
-        photoPointAnnotation = [[PhotoVideoAnnotation alloc] init];
-        photoPointAnnotation.location = pastPhotoPoint;
+        photoPointAnnotation = [[PhotoVideoAnnotation alloc] initWithLocation:current];
+        photoPointAnnotation.coordinate = current;
         [photoPointsArray addObject:photoPointAnnotation];
         
+        //update so that we can compare with the next current location
         pastPhotoPoint = current;
         
     }else{
