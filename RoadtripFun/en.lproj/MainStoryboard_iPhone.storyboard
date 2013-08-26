@@ -50,7 +50,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="2" eventType="touchUpInside" id="bml-9j-Be1"/>
                                     <action selector="cameraButtonTapped:" destination="2" eventType="touchUpInside" id="Qrl-hc-DBb"/>
                                 </connections>
                             </button>

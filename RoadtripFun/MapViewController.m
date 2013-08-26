@@ -243,7 +243,7 @@
     //compare proximity. if the location of the photo taken this time is far away enough from the location of the last taken photo, then there should be a different annotation for it.
     
     PhotoVideoAnnotation *photoPointAnnotation;
-    //the interval needs to be at least 10 meters. The first condition is initialization.
+    //the interval needs to be at least 30 meters. The first condition is initialization.
     if (MKMetersBetweenMapPoints(MKMapPointForCoordinate(pastPhotoPoint), MKMapPointForCoordinate(current)) > 30) {
         
         //create a new photoAnno object
